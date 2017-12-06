@@ -17,10 +17,16 @@ $( document ).ready(function() {
         }
 
     }
-    // function addNewButton(){
-    //     $()
+     function searchButton(){
+         $("#add-gif").on("click", function(){
+            event.preventDefault();
+            var topic = $("#topic-input").val().trim()
+            
+         randomTopics.push(topic);
+         renderButtons();
+     });
 
-    // }
+     }
     function displayGifs(){
     var topic = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -55,6 +61,7 @@ $( document ).ready(function() {
     });
 }
     renderButtons();
+    searchButton();
  $(document).on("click", ".random", displayGifs);
  $(document).on("click", ".image", function(){
      var state = $(this).attr('data-state');
